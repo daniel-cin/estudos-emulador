@@ -12,4 +12,5 @@ Criar uma branch com teu nome e fazer PR.
 - [ ] Criar scripts para automatizar
 - [ ] Validar simulador *cycle accurate*
 - [ ] Escrever tutorial para uso de emulador
-- [ ] Escrever exemplos 
+- [ ] Escrever exemplos
+- [ ] Adicionar extensões ao gitignore
