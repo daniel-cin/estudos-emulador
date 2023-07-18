@@ -2,7 +2,7 @@ ARMGNU = arm-none-eabi
 EMU = qemu-system-arm
 
 AOPS = --warn --fatal-warnings -mcpu=cortex-m3
-COPS = -Wall -O2 -nostdlib -nostartfiles -ffreestanding  -mcpu=cortex-m3
+COPS = -O0 -nostdlib -nostartfiles -ffreestanding  -mcpu=cortex-m3
 LIBS= ./Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I./Libraries/CMSIS/CM3/CoreSupport
 
 all : main.bin
