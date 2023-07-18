@@ -2,6 +2,7 @@
 // #define UART0BASE 0x4000C000
 #include <stdio.h>
 
+
 // ---- GLOBAL VARIABLES ----
 volatile unsigned int *const UART0BASE = (unsigned int *)0x4000C000;
 // volatile uint32_t cycles = SysTick->VAL;
@@ -126,41 +127,79 @@ uint32_t get_cycle_systick_counter()
     return SysTick->VAL;
 }
 
+void print_uint32_t(uint32_t num){
+    print_uart0(' - ');
+    static char cycles_buffer[16];
+    int_to_string(num, cycles_buffer);
+    print_uart0(cycles_buffer);
+}
+
 int main()
 {
     char cycles_buffer[16];
-    int target = 10;
 
-    // int result = binarySearch(arr, 0, n - 1, target);
+    // INICIALIZAR CLOCK
     initialize_systick_counter();
     volatile uint32_t cycles = 0;
-    // print_uart0(cycles);
 
+    // ROTINA BENCHMARK
     uint32_t Start = SysTick->VAL;
-    volatile int result = 0;
-    for (size_t i = 0; i < 10; i++)
-    {
-        for (size_t j = 0; j < 10000; j++)
-        {
-            result++;
-        }
-        // cycles = get_cycle_systick_counter();
-        // int_to_string(cycles, cycles_buffer);
-        // print_uart0(cycles_buffer);
-    }
-    uint32_t Stop = SysTick->VAL;
-    uint32_t Delta = 0x00FFFFFF & (Start - Stop);
-    int_to_string(cycles, cycles_buffer);
+    print_uart0("START= ");
+    int_to_string(Start, cycles_buffer);
     print_uart0(cycles_buffer);
+    print_uart0("\n");
+
+    volatile int result = 0;
+    volatile uint32_t a = 0;
+    volatile uint32_t b = 0;
+    volatile uint32_t c = 0;
+    volatile uint32_t res = 0;
+    a = 15;
+    b = 2000;
+    c = 100000000;
+    res = a+b+c;
+
+    // for (size_t i = 0; i < 1; i++)
+    // {
+    //     for (size_t j = 0; j < 20; j++)
+    //     {
+    //         result++;
+    //     }
+    // }
+    uint32_t Stop = SysTick->VAL;
+    print_uart0("Stop= ");
+    int_to_string(Stop, cycles_buffer);
+    print_uart0(cycles_buffer);
+    print_uart0("\n");
+    
+    uint32_t Delta = 0x00FFFFFF & (Start - Stop);
+    print_uart0("Delta= ");
+    int_to_string(Delta, cycles_buffer);
+    print_uart0(cycles_buffer);
+    print_uart0("\n");
+
+    // PRINTA NA TELA - CYCLES
+    // int_to_string(Delta, cycles_buffer);
+    // print_uart0(cycles_buffer);
+    
+    // PRINTA NA TELA - RES
+    int_to_string(res, cycles_buffer);
+    print_uart0("\nRES: ");
+    print_uart0(cycles_buffer);
+
+
+    // cycles = SysTick->VAL;
+    // int cycles_int = (int) cycles;
+
+    // int_to_string(cycles_int, cycles_buffer);
+    // print_uart0(cycles_buffer);
 
 
 
     /*--- Captura o contador de ciclos de clock ---*/
-    cycles = SysTick->VAL;
     /*--------------------------------------------*/
 
-    int_to_string(cycles, cycles_buffer);
-    print_uart0(cycles_buffer);
+    // int_to_string(cycles, cycles_buffer);
 
     return (0);
 }
