@@ -148,5 +148,3 @@ Ao executar o comando `make`, o código será compilado e o arquivo `main.bin` s
 
 
 ##### (Arquivo gerado por IA)
-
-
