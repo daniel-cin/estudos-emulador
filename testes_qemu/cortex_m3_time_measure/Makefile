@@ -28,5 +28,7 @@ main.bin : memmap vectors.o main.o
 qemu: main.bin
 	$(EMU) -M lm3s6965evb -m 128M -nographic -semihosting --semihosting-config enable=on,target=native -serial mon:stdio -kernel main.bin
 
+
 test_qemu: test.sh
 	./test.sh
+
