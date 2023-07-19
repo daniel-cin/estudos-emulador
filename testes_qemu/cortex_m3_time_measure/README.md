@@ -60,6 +60,32 @@ $ make qemu
 
 Para terminar a execução, utilizar o atalho **ctrl+a x** que encerra a instância criada do QEMU.
 
+## Execução dos testes
+
+No arquivo makefile existem alvos que são relacionados a testes, eles fornecem outputs estatísticos a respeito de um algoritmo de busca binaria e de algumas iteraçoes em loop com quantdade de iteraçoes progressivas (1, 10, 100, 1000, ..., 10000000), para validar a linearidade de ciclos de clocks consumidos, por meio do registrador `Systick` do Cortex-M3.
+Para rodar os testes, basta executar o comando:
+
+```console
+$ make statistics
+```
+para executar os dois testes citados ou:
+
+```console
+$ make statistics_iterative
+```
+
+```console
+$ make statistics_binary
+```
+
+para executar os testes individualmente.
+
+PS: Devido a algum bug o terminal pode ficar travado após a execução dos testes.
+
+O output dos testes vai para o diretorio `statatisctics/`, entre estes outputs estão, os arquivos crus do output direto da sequencia de execução dos batches de testes do QEMU, arquivos CSV com a quantidade de ciclos de clock de cada batch de teste realizado (extraidos dos arquivos crús), e arquivos PNG com os gráficos de cada batch de teste realizado.
+
+Dentro do makefile temos a variavel RUNS que determina qual sera o tamanho dos lotes de testes, inicialmente temos uma amostragem de 10 execuções por teste.
+
 ## Referencias uteis para o código
 
 https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick
