@@ -8,7 +8,7 @@ Dependências:
 
 Para compilar:
 
-    avr-gcc -std=c89 -pedantic -mmcu=atmega328 -o test.elf test.c
+    avr-gcc -std=c89 -pedantic -mmcu=atmega328 -o test.elf test.c avr-tick-counter.S
 
 Para executar:
 
