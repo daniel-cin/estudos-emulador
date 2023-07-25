@@ -4,7 +4,8 @@ EMU = qemu-system-arm
 AOPS = --warn --fatal-warnings -mcpu=cortex-m3
 COPS = -Wall -O0 -nostdlib -nostartfiles -ffreestanding  -mcpu=cortex-m3
 LIBS= ./Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x -I./Libraries/CMSIS/CM3/CoreSupport
-
+TESTFLAGS = -icount shift=1,align=off,sleep=off
+QFLAGS = -M lm3s6965evb -m 128M -cpu cortex-m3 -nographic -semihosting --semihosting-config enable=on,target=native -serial mon:stdio
 RUNS = 10 # Number of runs for each test
 
 output_dir := statistics
@@ -39,10 +40,10 @@ main_binary.bin : memmap vectors.o main_binary.o
 	$(ARMGNU)-objcopy main_binary.elf main_binary.bin -O binary
 
 qemu_binary: main_binary.bin
-	$(EMU) -M lm3s6965evb -m 128M -nographic -semihosting --semihosting-config enable=on,target=native -serial mon:stdio -kernel main_binary.bin
+	$(EMU) $(QFLAGS) $(TESTFLAGS) -kernel main_binary.bin
 
 qemu_iteration: main_iteration.bin
-	$(EMU) -M lm3s6965evb -m 128M -nographic -semihosting --semihosting-config enable=on,target=native -serial mon:stdio -kernel main_iteration.bin
+	$(EMU) $(QFLAGS) $(TESTFLAGS) -kernel main_iteration.bin
 
 statistics_iteration: teste_iteration.py
 	mkdir -p $(output_dir)

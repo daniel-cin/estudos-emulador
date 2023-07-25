@@ -26,10 +26,12 @@ def runQemu():
         command = [
             "qemu-system-arm",
             "-M", "lm3s6965evb",
+            "-cpu", "cortex-m3",
             "-m", "128M",
             "-nographic",
             "-semihosting",
             "--semihosting-config", "enable=on,target=native",
+            "-icount", "shift=1,align=off,sleep=off",
             "-kernel", "main_binary.bin"
         ]
         with open(log_path, "a") as output_file:

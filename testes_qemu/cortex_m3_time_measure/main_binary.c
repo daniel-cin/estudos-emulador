@@ -66,7 +66,7 @@ void binary_search_test(int arr[], int n) {
     int result = binarySearch(arr, 0, n - 1, target);
 
     
-    uint32_t cycles = SysTick->VAL; // Pega o valor atual do contador
+    uint32_t cycles = 0xFFFFFF -  SysTick->VAL; // Pega o valor atual do contador
 
 
     int_to_string(result, buffer);

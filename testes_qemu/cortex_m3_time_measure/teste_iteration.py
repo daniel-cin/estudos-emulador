@@ -29,15 +29,17 @@ def runQemu():
         command = [
             "qemu-system-arm",
             "-M", "lm3s6965evb",
+            "-cpu", "cortex-m3",
             "-m", "128M",
             "-nographic",
             "-semihosting",
             "--semihosting-config", "enable=on,target=native",
+            "-icount", "shift=1,align=off,sleep=off",
             "-kernel", "main_iteration.bin"
         ]
         with open(log_path, "a") as output_file:
             process = Popen(command, stdout=output_file, stderr=DEVNULL)
-            time.sleep(2)
+            time.sleep(1)
             process.kill()
 
 import re
@@ -54,18 +56,15 @@ def extract_iteration_values(file_path):
         'iteracao_1000': [],
         'iteracao_10000': [],
         'iteracao_100000': [],
-        'iteracao_1000000': [],
-        'iteracao_10000000': [],
-        'iteracao_100000000': []
+        'iteracao_1000000': [] 
     }
 
 
     with open(file_path, 'r') as file:
         input_data = file.read()
-
+    
     # Procurar por correspondências no texto de entrada
     matches = re.findall(pattern, input_data)
-
     # Extrair os valores das iterações e armazená-los no dicionário
     for match in matches:
         iterations = int(match[0])
@@ -85,10 +84,6 @@ def extract_iteration_values(file_path):
             iteration_values['iteracao_100000'].append(clock_cycles)
         elif iterations == 1000000:
             iteration_values['iteracao_1000000'].append(clock_cycles)
-        elif iterations == 10000000:
-            iteration_values['iteracao_10000000'].append(clock_cycles)
-        elif iterations == 100000000:
-            iteration_values['iteracao_100000000'].append(clock_cycles)
 
     return iteration_values
 
