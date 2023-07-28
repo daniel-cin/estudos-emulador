@@ -2,10 +2,8 @@ import gdb
 
 n_measures = 10
 
-
-
-breakpoint = ['main.c:35', 'main.c:37', 'main.c:39']
-defines = ['BUBBLE', 'TREE','BUBBLE_W']
+breakpoint = ['main.c:40', 'main.c:42', 'main.c:45', 'main.c:47']
+defines = ['BUBBLE', 'TREE','BUBBLE_W', 'SUM']
 
 measure = list()
 

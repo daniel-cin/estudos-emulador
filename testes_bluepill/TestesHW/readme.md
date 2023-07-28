@@ -85,7 +85,3 @@ O script realiza o seguinte:
 7. Armazena o valor da contagem de ciclos em uma lista chamada `measure`.
 8. Após todas as medições, o script exibe os valores de medição e encerra o GDB usando o comando `quit`.
 
-
-# main.c
-
-Em desenvolvimento, o algoritmo bubble sort esta dando o mesmo ressultado com a entrada do vetor aleatoria e com ordenação inversa. Necessita ser investigado.
