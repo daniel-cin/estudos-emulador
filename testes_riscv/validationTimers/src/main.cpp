@@ -1,11 +1,6 @@
 #include <Arduino.h>
 
-#include "esp_bt.h"
-#include "esp_wifi.h"
-#include "esp32-hal-cpu.h"
 
-void disableWifi();
-void disableBluetooth();
 uint32_t validation1();
 uint32_t validation2();
 uint32_t validation3();
@@ -17,9 +12,6 @@ void setup() {
     Serial.println("Starting ...");
     setCpuFrequencyMhz(80);
     Serial.printf("ESP.getCpuFreqMHz(): %u\n", ESP.getCpuFreqMHz());
-    
-    disableBluetooth();
-    disableWifi();
 }
 
 void loop() {
@@ -34,15 +26,6 @@ void loop() {
     delay(1000);
 }
 
-void disableWifi() {
-    esp_wifi_stop();
-    esp_wifi_deinit();
-}
-
-void disableBluetooth() {
-    esp_bt_controller_disable();
-    esp_bt_controller_deinit();
-}
 
 void nops() {
     __asm__ __volatile__ (
