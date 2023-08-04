@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include "Benchmark.h"
-#include <vector>    // Para utilizar o vetor de tempos
-#include <array>     // Para utilizar o array de funções
+#define BAUD 115200
 
 #define N 10
 
@@ -9,28 +8,65 @@
 /*que feio, variaveis globais*/
 int alea[N] = {74, 39, 102, 57, 86, 91, 32, 65, 78, 23};
 int worst[N] = {102, 91, 86, 78, 74, 65, 57, 39, 32, 23};
+int best[N] = {23, 32, 39, 57, 65, 74, 78, 86, 91, 102};
 int target = 10;
 
 /*Prototipos das funcoes de teste*/
 void binary_search_test(int arr[], int target);
 void bubble_sort_test(int arr[]);
 void sum_test();
+void nops();
 
 /*Prototipos das funcoes auxiliares*/
 void copyArray(int ref[], int cpy[]);
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(BAUD);
     Serial.println("Starting ...");
+    Benchmark::init();
 }
 
 void loop() {
 
-    // Medindo o tempo das funções com seus respectivos parâmetros usando a classe Benchmark
-    unsigned long mTime = Benchmark::cronometer(bubble_sort_test, alea);
+    //unsigned long mTime = Benchmark::cronometer(adpcm);
+    //unsigned long mTime = Benchmark::cronometer(bs);
+    //unsigned long mTime = Benchmark::cronometer(bsort100);
+    //unsigned long mTime = Benchmark::cronometer(cnt);
+    //unsigned long mTime = Benchmark::cronometer(compresss);
+    //unsigned long mTime = Benchmark::cronometer(cover);
+    //unsigned long mTime = Benchmark::cronometer(crc);
+    //unsigned long mTime = Benchmark::cronometer(duff);
+    //unsigned long mTime = Benchmark::cronometer(expintt);
+    //unsigned long mTime = Benchmark::cronometer(facc);
+    //unsigned long mTime = Benchmark::cronometer(fdctt);
+    //unsigned long mTime = Benchmark::cronometer(fibcall);
+    //unsigned long mTime = Benchmark::cronometer(insertsort);
+    //unsigned long mTime = Benchmark::cronometer(janne_complex);
+    //unsigned long mTime = Benchmark::cronometer(jfdctint);
+    //unsigned long mTime = Benchmark::cronometer(lcdnum);
+    //unsigned long mTime = Benchmark::cronometer(lmss);
+    //unsigned long mTime = Benchmark::cronometer(ludcmp);
+    //unsigned long mTime = Benchmark::cronometer(matmul);
+    //unsigned long mTime = Benchmark::cronometer(minverr);
+    //unsigned long mTime = Benchmark::cronometer(nc);
+    //unsigned long mTime = Benchmark::cronometer(nsichneu);
+    //unsigned long mTime = Benchmark::cronometer(primee);
+    //unsigned long mTime = Benchmark::cronometer(qsort_exam);
+    //unsigned long mTime = Benchmark::cronometer(recursion);
+    //unsigned long mTime = Benchmark::cronometer(selectt);
+    //unsigned long mTime = Benchmark::cronometer(sqrtt);
+    //unsigned long mTime = Benchmark::cronometer(statemate);
+    //unsigned long mTime = Benchmark::cronometer(ud);
+
+    //unsigned long mTime = Benchmark::cronometer(nops);
+    //unsigned long mTime = Benchmark::cronometer(sum_test);
+    //unsigned long mTime = Benchmark::cronometer(binary_search_test, best, target);
+    //unsigned long mTime = Benchmark::cronometer(bubble_sort_test, alea);
+    //unsigned long mTime = Benchmark::cronometer(bubble_sort_test, best);
+    unsigned long mTime = Benchmark::cronometer(bubble_sort_test, worst);
 
     // Imprimindo os tempos medidos no Monitor Serial
-    Serial.printf("Execution Time: %u cycles\n", mTime);
+    Serial.println("Execution Time: " + String(mTime) + " cycles");
     delay(1000);
 }
 
@@ -58,7 +94,7 @@ void binary_search_test(int arr[], int target) {
 
 void printArray(int arr[]) {
     for (int i = 0; i < N; i++) {
-        Serial.printf("%d ", arr[i]);
+        Serial.println(arr[i]);
     }
     Serial.println();
 }
@@ -82,3 +118,6 @@ void sum_test() {
     int sum =  2 + 2;
 }
 
+void nops() {
+    asm volatile("nop");
+}
