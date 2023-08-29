@@ -1,0 +1,19 @@
+$version
+	Simulavr VCD dump file generator
+$end
+$timescale 1ns $end
+$scope module PORTA $end
+$var wire 1 0 A0-Out $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bz 0
+$end
+#43000
+b0 0
+#49000
+b1 0
+#84000
+b0 0
+#99000

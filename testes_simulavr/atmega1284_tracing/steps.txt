@@ -1,0 +1,100 @@
+test.elf 0x0000: ,__vector_default              JMP 8c __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end 
+test.elf 0x0000: ,__vector_default              CPU-waitstate
+test.elf 0x0000: ,__vector_default              CPU-waitstate
+test.elf 0x008c: __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end EOR R1, R1 SREG=[------Z-] 
+test.elf 0x008e: __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end+0x1 OUT 0x3f, R1 
+test.elf 0x0090: __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end+0x2 LDI R28, 0xff 
+test.elf 0x0092: __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end+0x3 LDI R29, 0x40 
+test.elf 0x0094: __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end+0x4 OUT 0x3e, R29 SP=0x40ff 
+test.elf 0x0096: __trampolines_start,__trampolines_end,__dtors_end,__init,__ctors_start,__dtors_start,__ctors_end+0x5 OUT 0x3d, R28 SP=0x40ff 
+test.elf 0x0098: __do_clear_bss                 LDI R18, 0x01 
+test.elf 0x009a: __do_clear_bss+0x1             LDI R26, 0x00 
+test.elf 0x009c: __do_clear_bss+0x2             LDI R27, 0x01 
+test.elf 0x009e: __do_clear_bss+0x3             RJMP a2 
+test.elf 0x009e: __do_clear_bss+0x3             CPU-waitstate
+test.elf 0x00a2: .do_clear_bss_start            CPI R26, 0x02 SREG=[--HS-N-C] 
+test.elf 0x00a4: .do_clear_bss_start+0x1        CPC R27, R18 SREG=[--HS-N-C] 
+test.elf 0x00a6: .do_clear_bss_start+0x2        BRNE ->0xfff8 .do_clear_bss_loop             
+test.elf 0x00a6: .do_clear_bss_start+0x2        CPU-waitstate
+test.elf 0x00a0: .do_clear_bss_loop             ST X+, R1 
+test.elf 0x00a0: .do_clear_bss_loop             CPU-waitstate
+test.elf 0x00a2: .do_clear_bss_start            CPI R26, 0x02 SREG=[--HS-N-C] 
+test.elf 0x00a4: .do_clear_bss_start+0x1        CPC R27, R18 SREG=[--HS-N-C] 
+test.elf 0x00a6: .do_clear_bss_start+0x2        BRNE ->0xfff8 .do_clear_bss_loop             
+test.elf 0x00a6: .do_clear_bss_start+0x2        CPU-waitstate
+test.elf 0x00a0: .do_clear_bss_loop             ST X+, R1 
+test.elf 0x00a0: .do_clear_bss_loop             CPU-waitstate
+test.elf 0x00a2: .do_clear_bss_start            CPI R26, 0x02 SREG=[------Z-] 
+test.elf 0x00a4: .do_clear_bss_start+0x1        CPC R27, R18 SREG=[------Z-] 
+test.elf 0x00a6: .do_clear_bss_start+0x2        BRNE ->0xfff8 .do_clear_bss_loop             
+test.elf 0x00a8: .do_clear_bss_start+0x3        CALL 0xb4 SP=0x40fe 0x56 SP=0x40fd 0x0 
+test.elf 0x00a8: .do_clear_bss_start+0x3        CPU-waitstate
+test.elf 0x00a8: .do_clear_bss_start+0x3        CPU-waitstate
+test.elf 0x00a8: .do_clear_bss_start+0x3        CPU-waitstate
+test.elf 0x00b4: main                           PUSH R28 SP=0x40fc 0xff 
+test.elf 0x00b4: main                           CPU-waitstate
+test.elf 0x00b6: main+0x1                       PUSH R29 SP=0x40fb 0x40 
+test.elf 0x00b6: main+0x1                       CPU-waitstate
+test.elf 0x00b8: main+0x2                       IN R28, 0x3d 
+test.elf 0x00ba: main+0x3                       IN R29, 0x3e 
+test.elf 0x00bc: main+0x4                       LDI R24, 0x21 
+test.elf 0x00be: main+0x5                       LDI R25, 0x00 
+test.elf 0x00c0: main+0x6                       LDI R18, 0xff 
+test.elf 0x00c2: main+0x7                       MOVW R30, R24 
+test.elf 0x00c4: main+0x8                       STD Z+0, R18 
+test.elf 0x00c4: main+0x8                       CPU-waitstate
+test.elf 0x00c6: main+0x9                       LDI R24, 0x22 
+test.elf 0x00c8: main+0xa                       LDI R25, 0x00 
+test.elf 0x00ca: main+0xb                       LDI R18, 0xff 
+test.elf 0x00cc: main+0xc                       MOVW R30, R24 
+test.elf 0x00ce: main+0xd                       STD Z+0, R18 
+test.elf 0x00ce: main+0xd                       CPU-waitstate
+test.elf 0x00d0: main+0xe                       LDS R24, 0x100 
+test.elf 0x00d0: main+0xe                       CPU-waitstate
+test.elf 0x00d4: main+0x10                      LDS R25, 0x101 
+test.elf 0x00d4: main+0x10                      CPU-waitstate
+test.elf 0x00d8: main+0x12                      ADIW R24, 1 SREG=[--------] 
+test.elf 0x00d8: main+0x12                      CPU-waitstate
+test.elf 0x00da: main+0x13                      STS 0x101, R25 
+test.elf 0x00da: main+0x13                      CPU-waitstate
+test.elf 0x00de: main+0x15                      STS 0x100, R24 
+test.elf 0x00de: main+0x15                      CPU-waitstate
+test.elf 0x00e2: main+0x17                      LDS R24, 0x100 
+test.elf 0x00e2: main+0x17                      CPU-waitstate
+test.elf 0x00e6: main+0x19                      LDS R25, 0x101 
+test.elf 0x00e6: main+0x19                      CPU-waitstate
+test.elf 0x00ea: main+0x1b                      ADIW R24, 1 SREG=[--------] 
+test.elf 0x00ea: main+0x1b                      CPU-waitstate
+test.elf 0x00ec: main+0x1c                      STS 0x101, R25 
+test.elf 0x00ec: main+0x1c                      CPU-waitstate
+test.elf 0x00f0: main+0x1e                      STS 0x100, R24 
+test.elf 0x00f0: main+0x1e                      CPU-waitstate
+test.elf 0x00f4: main+0x20                      LDS R24, 0x100 
+test.elf 0x00f4: main+0x20                      CPU-waitstate
+test.elf 0x00f8: main+0x22                      LDS R25, 0x101 
+test.elf 0x00f8: main+0x22                      CPU-waitstate
+test.elf 0x00fc: main+0x24                      ADIW R24, 1 SREG=[--------] 
+test.elf 0x00fc: main+0x24                      CPU-waitstate
+test.elf 0x00fe: main+0x25                      STS 0x101, R25 
+test.elf 0x00fe: main+0x25                      CPU-waitstate
+test.elf 0x0102: main+0x27                      STS 0x100, R24 
+test.elf 0x0102: main+0x27                      CPU-waitstate
+test.elf 0x0106: main+0x29                      LDI R24, 0x22 
+test.elf 0x0108: main+0x2a                      LDI R25, 0x00 
+test.elf 0x010a: main+0x2b                      MOVW R30, R24 
+test.elf 0x010c: main+0x2c                      STD Z+0, R1 
+test.elf 0x010c: main+0x2c                      CPU-waitstate
+test.elf 0x010e: main+0x2d                      LDI R24, 0x00 
+test.elf 0x0110: main+0x2e                      LDI R25, 0x00 
+test.elf 0x0112: main+0x2f                      POP R29 SP=0x40fc 0x40 
+test.elf 0x0112: main+0x2f                      CPU-waitstate
+test.elf 0x0114: main+0x30                      POP R28 SP=0x40fd 0xff 
+test.elf 0x0114: main+0x30                      CPU-waitstate
+test.elf 0x0116: main+0x31                      RET SP=0x40fe 0x0 SP=0x40ff 0x56 
+test.elf 0x0116: main+0x31                      CPU-waitstate
+test.elf 0x0116: main+0x31                      CPU-waitstate
+test.elf 0x0116: main+0x31                      CPU-waitstate
+test.elf 0x00ac: .do_clear_bss_start+0x5        JMP 118 exit,_exit                     
+test.elf 0x00ac: .do_clear_bss_start+0x5        CPU-waitstate
+test.elf 0x00ac: .do_clear_bss_start+0x5        CPU-waitstate
+test.elf 0x0118: exit,_exit                     
